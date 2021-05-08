@@ -1,0 +1,11 @@
+<svg
+  width="18px"
+  height="34px"
+  version="1.1"
+  xmlns="http://www.w3.org/2000/svg"
+>
+              <polyline
+    points="4,4 14,18 4,30"
+    style="fill: #ded8d8; stroke: #333; stroke-with:3;"
+  />
+            </svg>

@@ -1,0 +1,145 @@
+.me {
+    .sroll{
+      background: #f7f7f7;
+       //解决底部出现大量空白，以及列表项显示不全的问题
+      .pull-to-refresh-layer {
+        width: 100%;
+        height: 600px !important;
+        margin-top: -315px !important;
+        text-align: center;
+        font-size: 32px;
+        color: #aaa;
+        float: left;
+        top: 0;
+        left: 0;
+        background-image: linear-gradient(
+          to right,
+          rgb(232, 32, 59),
+          rgb(199, 20, 138)
+        );  
+        border-bottom-left-radius: 7%;
+        border-bottom-right-radius: 7%;
+      }
+    }
+   
+    .configuration {
+      width: 100%;
+      text-align: right;
+      position: absolute;
+      left: -0.5rem;
+      top: 1rem;
+      z-index: 99;
+      i {
+        display: inline-block;
+        color: #eee;
+        font-size: 1.25rem;
+        margin-left: 1rem;
+      }
+    }
+    .container {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      padding: 0px 1rem;
+      box-sizing: border-box;
+     .meInfo {
+        width: 100%;
+        height: 6rem;
+        display: flex;
+        margin-top: 3rem;
+        margin-top: 5.5rem;
+        img {
+          width: 3.6rem;
+          height: 3.6rem;
+          border-radius: 50%;
+        }
+        span {
+          display: inline-block;
+          width: 7rem;
+          height: 3rem;
+          line-height: rem;
+          margin-left: 1rem;
+          margin-top: 0.7rem;
+          color: #eee;
+        }
+      }
+      .listCategory {
+        margin-top: -0.6rem;
+        width: 100%;
+        height: 6.4rem;
+        background: #fff;
+        padding: 0 0.75rem;
+        box-sizing: border-box;
+        overflow: hidden;
+         border-radius: 0.5rem;
+        >div {
+          width: 100%;
+          height: 3.2rem;
+          background: #fff;
+            display: flex;
+           justify-content: space-between;
+           font-size: 0.8rem;
+           line-height: 3.2rem;
+          i{
+              display: inline-block;
+              font-size: 1rem;
+          }
+        }
+        .orderList {
+          border-bottom: 1px #ccc solid;
+        }
+       
+      }
+      .operationListWrap{
+        margin-top: 1rem;
+        width: 100%;
+        height: 3.9rem;
+        background:#fff;
+        border-radius: 0.5rem;
+        display: flex;
+        text-align: center;
+        justify-content: space-between; 
+        padding: 0.6rem 0;
+        box-sizing: border-box;
+        >div{
+          width: 4.3rem;
+          &:not(:last-child){
+            border-right:1px solid  #ccc;
+          }
+          p{
+            color: #74787a;
+            font-size: 0.6rem;
+            // height: 1.125rem;
+            margin-top: 0.6rem;
+            &.quantity{
+              color: #c62f2e;
+            }
+          }
+        }  
+    
+      }
+      .posts{
+        width: 100%;
+        height: 3.75rem;
+        display: flex;
+        justify-content: space-between;
+        margin-top: 1rem;
+        background:#fff;
+        border-radius: 0.5rem;
+        line-height: 3.75rem;
+        padding: 0 0.75rem;
+        box-sizing: border-box;
+        i{
+          font-size: 1.2rem;
+        }
+        .myposts{
+            display: flex;
+            justify-content:  flex-start;
+            i{
+              margin-right: 0.5rem;
+            }
+        }
+      }
+    }
+  }
