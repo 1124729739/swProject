@@ -20,17 +20,17 @@
     </div>
     <!--循环-->
     <div class="hots-x">
-      <div class="hots-xu">
-        <div><img src="../assets/猫.jpg" alt="" /></div>
-        <div>王安忆短篇小说编年(卷4黑弄堂2001-2007)</div>
-        <div><p>王安石</p></div>
-        <div><span>¥15.2</span></div>
-      </div>
-      <div class="hots-xu">
-        <div><img src="../assets/猫.jpg" alt="" /></div>
-        <div>王安忆短篇小说编年(卷4黑弄堂2001-2007)</div>
-        <div><p>王安石</p></div>
-        <div><span>¥15.2</span></div>
+      <div class="hots-xu" v-for="item of list" :key="item.pid">
+        <router-link :to="`/article/${item.pid}`">
+          <div><img :src="item.image" alt="" width="100" height="100" /></div>
+          <div>{{ item.title }}</div>
+          <div>
+            <p>{{ item.author }}</p>
+          </div>
+          <div>
+            <span>¥{{ item.price }}</span>
+          </div>
+        </router-link>
       </div>
     </div>
   </div>
@@ -43,21 +43,36 @@ export default {
       isshow: true,
       productsList: [],
       offset: 0,
+      list: [],
     };
   },
 
-  created() {
+  mounted() {
     this.axios
-      .get("/sw/producList/", {
+      .get("/sw/productList/", {
         params: {
           cname: this.className,
           offset: this.offset,
         },
       })
-      .then((re) => {
-        console.log(re);
+      .then((res) => {
+        // console.log(res.data);
+        let i = res.data.data;
+        i.forEach((item) => {
+          try {
+            if (item.image[0]) {
+              item.image = JSON.parse(item.image)[0];
+              item.image = require("../assets/image/" + item.image);
+            }
+          } catch {
+            console.log(item.image);
+          }
+        });
+        console.log(i);
+        this.list = i;
       });
   },
+
   methods: {
     xial() {
       if (this.isshow == true) {
@@ -122,6 +137,7 @@ export default {
 .hots-x {
   display: flex;
   padding: 0.5rem 0.6rem 0.5rem 0.6rem;
+  flex-wrap: wrap;
 }
 .hots-xu {
   width: 50%;

@@ -160,8 +160,8 @@ export default {
   },
   watch: {
     selected(newval, oldav1) {
-      if (newval == "feilei") {
-        this.$router.push("feilei");
+      if (newval == "fenlei") {
+        this.$router.push("fenlei");
       } else if (newval == "cart") {
         this.$router.push("cart");
       } else if (newval == "me") {

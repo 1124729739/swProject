@@ -1,7 +1,7 @@
 <template>
   <div class="myconter">
-    <swipo></swipo>
-    <jiageyhu></jiageyhu>
+    <swipo :image="listxiabiao.image" :pid="listxiabiao.pid"></swipo>
+    <jiageyhu :listxiabiao="listxiabiao"></jiageyhu>
     <tuijing></tuijing>
     <!-- 出版信息+售后政策 -->
     <div class="chubang">
@@ -15,16 +15,24 @@
         </div>
         <div class="biaoge">
           <div>
-            <div class="left1"><div>作者</div></div>
-            <div class="right1"><div>宋春楠</div></div>
+            <div class="left1">
+              <div>作者</div>
+            </div>
+            <div class="right1">
+              <div>{{ listxiabiao.author }}</div>
+            </div>
           </div>
           <div>
-            <div class="left1"><div>作者</div></div>
-            <div class="right1"><div>宋春楠</div></div>
+            <div class="left1"><div>出版社</div></div>
+            <div class="right1">
+              <div>{{ listxiabiao.publishing }}</div>
+            </div>
           </div>
           <div>
-            <div class="left1"><div>作者</div></div>
-            <div class="right1"><div>宋春楠</div></div>
+            <div class="left1"><div>出版时间</div></div>
+            <div class="right1">
+              <div>{{ listxiabiao.put_time }}</div>
+            </div>
           </div>
         </div>
       </div>
@@ -55,6 +63,7 @@ import Jiageyhu from "./Jiageyhu.vue";
 import Tuijing from "./Tuijing.vue";
 
 export default {
+  props: ["listxiabiao"],
   components: {
     Swipo,
     Jiageyhu,
@@ -63,7 +72,12 @@ export default {
   data() {
     return {
       chu: 0,
+      yu: {},
+      image: "",
     };
+  },
+  mounted() {
+    console.log(this.listxiabiao);
   },
 };
 </script>

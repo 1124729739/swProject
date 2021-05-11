@@ -4,7 +4,7 @@
     <div class="jia">
       <div class="price">
         <div>
-          <div class="shiji">¥19.29</div>
+          <div class="shiji">¥{{ listxiabiao.price }}</div>
           <div class="miaosha">¥19.29</div>
         </div>
         <div>
@@ -20,7 +20,7 @@
         </div>
       </div>
       <!-- 标题 -->
-      <div class="title">英国浪漫主义/剑桥文学指南</div>
+      <div class="title">{{ listxiabiao.title }}</div>
     </div>
     <div class="jianju"></div>
     <div class="jia1">
@@ -29,7 +29,7 @@
         <div>
           <div class="zuozhe1">
             <div class="author">作者</div>
-            <div class="isauthor">Stuart Curran编</div>
+            <div class="isauthor">{{ listxiabiao.author }}</div>
           </div>
         </div>
         <div class="gend">
@@ -49,7 +49,7 @@
         <div>
           <div class="zuozhe1">
             <div class="author">出版社</div>
-            <div class="isauthor">上海外语教育出版社</div>
+            <div class="isauthor">{{ listxiabiao.publishing }}</div>
           </div>
         </div>
         <div class="gend">
@@ -83,6 +83,11 @@
     <div class="jianju"></div>
   </div>
 </template>
+<script>
+export default {
+  props: ["listxiabiao"],
+};
+</script>
 <style>
 .jiageyhu .jia {
   padding-left: 0.6rem;
@@ -142,7 +147,7 @@
 .jiageyhu .zuozhe1 {
   box-sizing: border-box;
   display: flex;
-  width: 70%;
+  width: 105rpx;
   /* overflow: hidden; */
   white-space: nowrap;
   /* text-overflow: ellipsis; */
@@ -152,6 +157,9 @@
   color: #363433;
 }
 .jiageyhu .isauthor {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
   color: rgb(153, 153, 153);
   margin-left: 0.29297rem;
   /* overflow: hidden;

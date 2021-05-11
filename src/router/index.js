@@ -1,13 +1,24 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-import Home from "../views/Home"; //首页
+import Home from "../views/Home"; 
 import Me from "../views/Me.vue";
 import Cart from "../views/Cart.vue";
 import Fenlei from "../views/Fenlei.vue";
 import Hotsale from "../views/Hotsale.vue";
+import Article from "../views/Article";
 Vue.use(VueRouter);
 
 const routes = [
+  {
+    path: "/article/:pid", //详情页
+    name: "Article",
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: () =>
+      import(/* webpackChunkName: "article" */ "../views/Article.vue"),
+    props: true,
+  },
 
   {
     path: "/hotsale/:className",

@@ -40,7 +40,7 @@
                 v-for="(j, index2) of fenleiList.text_obj[index]"
                 :key="index2"
               >
-                <router-link :to="`/hotsale/${j.titls}/`">
+                <router-link :to="`/hotsale/${j.titls}`">
                   <img :src="j.imgs" style="width: 100%" alt />
                   <div>{{ j.titls }}</div>
                 </router-link>
@@ -66,9 +66,9 @@
         <span v-if="selected == 'home'" style="color: red">首页</span>
         <span v-else>首页</span>
       </mt-tab-item>
-      <mt-tab-item id="feilei">
+      <mt-tab-item id="fenlei">
         <img
-          v-if="selected == 'feilei'"
+          v-if="selected == 'fenlei'"
           src="../assets/分类2.png"
           alt=""
           slot="icon"
@@ -107,7 +107,7 @@
 export default {
   data() {
     return {
-      selected: "feilei",
+      selected: "fenlei",
       show: "1",
       fenleiList: {
         category1: {}, //表一
@@ -171,8 +171,8 @@ export default {
 
   watch: {
     selected(newval, oldav1) {
-      if (newval == "feilei") {
-        this.$router.push("feilei");
+      if (newval == "fenlei") {
+        this.$router.push("fenlei");
       } else if (newval == "cart") {
         this.$router.push("cart");
       } else if (newval == "me") {

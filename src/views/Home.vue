@@ -54,15 +54,15 @@
         <span v-if="selected == 'home'" style="color: red">首页</span>
         <span v-else>首页</span>
       </mt-tab-item>
-      <mt-tab-item id="feilei">
+      <mt-tab-item id="fenlei">
         <img
-          v-if="selected == 'feilei'"
+          v-if="selected == 'fenlei'"
           src="../assets/分类2.png"
           alt=""
           slot="icon"
         />
         <img v-else src="../assets/分类1.png" alt="" slot="icon" />
-        <span v-if="selected == 'feilei'" style="color: red">分类</span>
+        <span v-if="selected == 'fenlei'" style="color: red">分类</span>
         <span v-else>分类</span>
       </mt-tab-item>
       <mt-tab-item id="cart">
@@ -140,8 +140,8 @@ export default {
   },
   watch: {
     selected(newval, oldav1) {
-      if (newval == "feilei") {
-        this.$router.push("feilei");
+      if (newval == "fenlei") {
+        this.$router.push("fenlei");
       } else if (newval == "cart") {
         this.$router.push("cart");
       } else if (newval == "me") {
