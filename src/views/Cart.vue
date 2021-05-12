@@ -5,22 +5,67 @@
         <span>购物车</span>
         <i class="iconfont icon-dizhi"></i>
       </div>
-      <div class="promot">
+      <!-- <div class="promot">
         <van-button plain type="danger">登入</van-button>
         <span>登入后台商品将合并到你账号中</span>
-      </div>
+      </div> -->
     </div>
-    <div class="unlogin">
+
+    <div class="unlogin" v-show="false">
       <div class="cartImg">
         <img src="../assets/empty-cart.a81ec2ef723ec415.png" alt="" />
         <p>购物车没有商品</p>
       </div>
       <div class="buttonGroup">
-        <button>去看收藏</button>
         <button>随便逛逛</button>
+        <button>查看订单</button>
       </div>
     </div>
-    <div class="login"></div>
+
+    <div class="payment">
+      <van-checkbox-group
+        v-model="result"
+        ref="checkboxGroup"
+        checked-color="#c62f2e"
+      >
+        <!-- 商品卡片 -->
+        <div class="commodity" v-for="(item, index) of 5" :key="index">
+          <van-swipe-cell>
+            <div class="card-and-checkbox">
+              <van-checkbox :name="index"> </van-checkbox>
+              <van-card
+                num="2"
+                price="2.00"
+                desc="描述信息"
+                title="商品标题"
+                thumb="https://img01.yzcdn.cn/vant/ipad.jpeg"
+              >
+                <template #tags>
+                  <van-tag plain type="danger">标签</van-tag>
+                  <van-tag plain type="danger">标签</van-tag>
+                </template>
+                <template #footer>
+                  <van-stepper />
+                </template>
+              </van-card>
+            </div>
+          </van-swipe-cell>
+        </div>
+      </van-checkbox-group>
+
+      <div class="bottom-handle">
+        <van-checkbox v-model="isAll" @click="checkAll" checked-color="#c62f2e"
+          >全选</van-checkbox
+        >
+        <div class="bottom-right">
+          <span class="heji"
+            >合计:<b class="price">¥{{ 123 }}</b></span
+          >
+          <van-button color="#c62f2e" size="nomore">结算({{ 2 }})</van-button>
+        </div>
+      </div>
+    </div>
+
     <!--底部选项卡-->
     <mt-tabbar v-model="selected" fixed>
       <mt-tab-item id="home">
@@ -77,10 +122,6 @@
 </style>
 
 
-
-
-
-
 <script>
 export default {
   data() {
@@ -124,6 +165,11 @@ export default {
       ],
       carts: [], //购物车数据
       selected: "cart",
+      result: [],
+      //用来判断商品是否全选中
+      isAll: false,
+      value: 1,
+      
     };
   },
   methods: {
@@ -163,6 +209,9 @@ export default {
         }
       }
     },
+    checkAll() {
+      this.$refs.checkboxGroup.toggleAll(this.isAll ? true : "");
+    },
   },
   watch: {
     selected(newval, oldav1) {
@@ -176,14 +225,75 @@ export default {
         this.$router.push("/");
       }
     },
+    result(x,o){
+         
+      if(x.length==5){
+           this.isAll= true
+      }else{
+          this.isAll= false
+      }
+    }
   },
 };
 </script>  
 
- <!--  <div class="item" v-for="(item, i) of arr" :key="i">
-        <p>商品id:{{ item.skuId }}</p>
-        <p>商品名称:{{ item.title }}</p>
-        <p>商品图片:{{ item.img }}</p>
-        <p>商品价格:{{ item.price }}</p>
-        <p>商品数量{{ item.num }}</p>
-        <button @click="addCart">加入购物</button> -->
+<style lang="scss">
+.payment {
+  margin-top: 2.3rem;
+  height: 25rem;
+  background: #f7f7f7;
+  overflow: auto;
+  .commodity {
+    .van-checkbox {
+      height: 6.6rem;
+      margin-top: 0.4rem;
+    }
+  }
+}
+.goods-card {
+  margin: 0;
+}
+.delete-button {
+  height: 100% !important;
+}
+.card-and-checkbox {
+  display: flex;
+  .van-card {
+    flex-grow: 1;
+    background: #fff;
+  }
+}
+
+.bottom-handle {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  width: 100%;
+  height: 3rem;
+  position: fixed;
+  bottom: 2.77rem;
+  background: white;
+  font-size: 0.8rem;
+  padding: 0 1rem;
+  box-sizing: border-box;
+  .bottom-right {
+    display: flex;
+    align-items: center;
+    .heji {
+      margin-right: 0.7rem;
+      .price {
+        margin-left: 0.5rem;
+        color: crimson;
+      }
+    }
+  }
+  .van-button {
+    width: 6rem;
+    // color: #333333 !important;
+  }
+}
+.van-checkbox {
+  background: #fff;
+}
+</style>
